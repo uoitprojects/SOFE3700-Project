@@ -1,0 +1,188 @@
+CREATE TABLE Artist
+(
+id STRING NOT NULL,
+name STRING NOT NULL,
+type VARCHAR(20) NOT NULL,
+PRIMARY KEY(id)
+);
+
+
+INSERT INTO Artist
+VALUES ('2008947', 'Panic! at the Disco', 'Band');
+
+INSERT INTO Artist
+VALUES ('6ha97s2', 'Sara Bareilles', 'Artist');
+
+INSERT INTO Artist
+VALUES ('8jak098', 'Hey Ocean!', 'Band');
+
+INSERT INTO Artist
+VALUES ('02kdw09', 'Kelly Clarkson', 'Artist');
+
+INSERT INTO Artist
+VALUES ('sj8dlsa', 'Paramore', 'Band');
+
+INSERT INTO Artist
+VALUES ('87aj098', 'Beastie Boys', 'Band');
+
+CREATE TABLE Album
+
+(
+album_type VARCHAR(15) NOT NULL,
+artist STRING NOT NULL,
+id STRING NOT NULL,
+name STRING NOT NULL,
+release_date VARCHAR(9) NOT NULL,
+genre VARCHAR(15),
+rating VARCHAR(25),
+publisher VARCHAR(25),
+PRIMARY KEY(id),
+FOREIGN KEY (artist) REFERENCES Artist(name)
+);
+
+INSERT INTO Album
+VALUES('Vinyl', 'Beastie Boys', "Paul's Boutique", '23j9s098a7', '1989', 'Hip Hop, Rock, Funk / Soul', 
+'Explicit Content', 'Dust Brothers Music');
+
+INSERT INTO Album
+VALUES('CDR', 'Sara Bareilles', "Kaleidoscope Heart", '8sjw93ja9s', '2010', 'Rock, Pop', 
+'No Warnings', 'Epic');
+
+INSERT INTO Album
+VALUES('CDR', 'Sara Bareilles', "Little Voice", '7saj890a98', '2007', 'Rock, Pop', 
+'No Warnings', 'Epic');
+
+INSERT INTO Album
+VALUES('CDR', 'Panic! at the Disco', "A Fever You Can't Sweat Out", '8a927sjs9a', '2005', 'Rock', 
+'Explicit Content', 'Fueled by Ramen');
+
+INSERT INTO Album
+VALUES('CDR', 'Hey Ocean!', "Stop Looking Like Music", '893js08wh3', '2006', 'Rock, Pop', 
+'No Warnings', 'Vertical Productions');
+
+INSERT INTO Album
+VALUES('CDR', 'Paramore', "All We Know Is Falling", 's8wjw02j21', '2005', 'Rock', 
+'No Warnings', 'Fueled by Ramen');
+
+CREATE TABLE Author
+(
+first_name varchar(25) NOT NULL,
+last_name varchar(25) NOT NULL,
+other_name string,
+date_of_birth string NOT NULL,
+place_of_birth STRING,
+CONSTRAINT pkey_const_auth PRIMARY KEY (first_name, last_name, other_name)
+);
+
+INSERT INTO Author(first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('Christopher', 'Paolini', 'November 17, 1983', 'Los Angeles, California, United States');
+
+INSERT INTO Author(first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('Eoin', 'Colfer', 'May 14, 1965', 'Wexford, Republic of Ireland');
+
+INSERT INTO Author
+VALUES ('Joanne', 'Rowling', 'J.K.', 'July 31, 1965', 'Yate, United Kingdom');
+
+INSERT INTO Author(first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('Alexandre', 'Dumas', 'July 24, 1802', 'Villers-Cotterêts, France');
+
+INSERT INTO Author(first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('Shannon', 'Hale', 'January 26, 1974', 'Salt Lake City, Utah, United States');
+
+CREATE TABLE Book
+(
+isbn int NOT NULL,
+title string NOT NULL,
+author_first_name string NOT NULL,
+author_last_name string NOT NULL,
+author_other_name string,
+publication_date string,
+page_length int NOT NULL,
+category string, 
+publisher string NOT NULL,
+type string,
+genre string,
+series string, 
+PRIMARY KEY (isbn),
+FOREIGN KEY ("author_first_name") references Author(first_name),
+FOREIGN KEY ("author_last_name") references Author(last_name),
+FOREIGN KEY ("author_other_name") references Author(other_name)
+);
+
+INSERT INTO Book(isbn, title, author_first_name, author_last_name, page_length, category, publisher, type, genre, series)
+VALUES(0966621336, 'Eragon', 'Christopher', 'Paolini', 544, 'Young Adult', 'Paolini LLC', 'Novel', 'Fantasy novel, Dystopia', 'Inheritance Cycle');
+
+INSERT INTO Book(isbn, title, author_first_name, author_last_name, page_length, category, publisher, type, genre, series)
+VALUES(0375826700, 'Eldest', 'Christopher', 'Paolini', 694, 'Young Adult', 'Paolini LLC', 'Novel', 'Fantasy novel, Dystopia', 'Inheritance Cycle');
+
+INSERT INTO Book(isbn, title, author_first_name, author_last_name, publication_date, page_length, category, publisher, type, genre, series)
+VALUES(1582348898, 'Enna Burning', 'Shannon', 'Hale', '7 November 2005', 317, 'Teen', 'Bloomsbury Publishing PLC', 'Novel', 'Fantasy novel', 'The Books of Bayern');
+
+INSERT INTO Book
+VALUES(0747546241, 'Harry Potter and the Goblet of Fire', 'Joanne', 'Rowling', 'J.K.', '8 July 2000', 636, 'Young Adult', 'Bloomsbury Childrens', 'Novel', 'Fantasy', 'Harry Potter');
+
+INSERT INTO Book(isbn, title, author_first_name, author_last_name, publication_date, page_length, category, publisher, type, genre, series)
+VALUES(0141321318, 'Artemis Fowl: The Eternity Code', 'Eoin', 'Colfer', '27 April 2003 ', 352, 'Teen', 'Viking Press', 'Novel', 'Fantasy novel', 'Artemis Fowl');
+
+INSERT INTO Book(isbn, title, author_first_name, author_last_name, publication_date, page_length, category, publisher, type, genre, series)
+VALUES(0141381647, 'Artemis Fowl: The Opal Deception', 'Eoin', 'Colfer', '30 April 2005 ', 352, 'Teen', 'Viking Press', 'Novel', 'Fantasy novel', 'Artemis Fowl');
+
+
+CREATE TABLE Playlist
+(
+id INT NOT NULL,
+book_isbn INT NOT NULL,
+genre STRING,
+PRIMARY KEY(id),
+FOREIGN KEY ("book_isbn") references Book(isbn)
+);
+
+INSERT INTO Playlist(id, book_isbn)
+VALUES(15673684, 0141321318);
+
+INSERT INTO Playlist
+VALUES(57954213, 1582348898, 'Bluegrass');
+
+INSERT INTO Playlist(id, book_isbn)
+VALUES(24687456, 0747546241);
+
+INSERT INTO Playlist(id, book_isbn)
+VALUES(54321648, 0141381647);
+
+INSERT INTO Playlist(id, book_isbn)
+VALUES(42145845, 0375826700);
+
+
+CREATE TABLE User
+(
+name VARCHAR(25) NOT NULL,
+email VARCHAR(45) NOT NULL,
+phone_number VARCHAR(15),
+password MD5 NOT NULL,
+country VARCHAR(45), 
+saved_playlist INT,
+PRIMARY KEY(email),
+FOREIGN KEY ("saved_playlist") references Playlist(id)
+);
+
+INSERT INTO User(name, email, password, country)
+VALUES('Glen', 'glenr@google.com', 'patd', 'Canada');
+
+INSERT INTO User
+VALUES('Claud', 'claudc@outlook.com', '416-909-7878', '123', 'United States', 57954213);
+
+INSERT INTO User(name, email, password, country)
+VALUES('Adelina', 'adelinac@outlook.com', '456', 'United Kingdom');
+
+INSERT INTO User(name, email, password, country)
+VALUES('Faith', 'faithd@rogers.com', 'abc', 'Egypt');
+
+INSERT INTO User(name, email, phone_number, password, country)
+VALUES('Dalton', 'daltonw@google.com', '647-367-7828', '55a3!', 'Canada');
+
+INSERT INTO User(name, email, phone_number, password, country)
+VALUES('Leora', 'leorag@outlook.com', '939-456-7228', 'password', 'United States');
+
+UPDATE User
+SET saved_playlist=42145845
+WHERE email='adelinac@outlook.com';
