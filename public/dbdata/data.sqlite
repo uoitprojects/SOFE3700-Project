@@ -1,23 +1,24 @@
---STORES ARTIST DATA
-
-
+#STORES ARTIST DATA
 
 CREATE TABLE Artist
 (
-id STRING NOT NULL,
-name STRING NOT NULL,
+id VARCHAR(30) NOT NULL,
+name VARCHAR(30) NOT NULL,
 type VARCHAR(20) NOT NULL,
 PRIMARY KEY(id)
 );
 
 
 
---TUPLE INSERTIONS FOR ARTIST
+#TUPLE INSERTIONS FOR ARTIST
 
 
 
 INSERT INTO Artist
 VALUES ('2008947', 'Panic! at the Disco', 'Band');
+
+INSERT INTO Artist
+VALUES ('5td74k2', 'Blink-182', 'Band');
 
 INSERT INTO Artist
 VALUES ('6ha97s2', 'Sara Bareilles', 'Artist');
@@ -37,22 +38,22 @@ VALUES ('87aj098', 'Beastie Boys', 'Band');
 
 
 
---TABLE FOR STORING ARTIST GENRES ... WEAK ENTITY RELATIONSHIP TO ARTIST ... REFERENCES ARTIST
+#TABLE FOR STORING ARTIST GENRES ... WEAK ENTITY RELATIONSHIP TO ARTIST ... REFERENCES ARTIST
 
 
 
 
 CREATE TABLE Artist_Genre
 (
-id STRING NOT NULL,
-genre STRING
+id VARCHAR(30) NOT NULL,
+genre VARCHAR(30),
 FOREIGN KEY (id) REFERENCES Artist(id)
 );
 
 
 
 
---TUPLE INSERTIONS FOR ARTIST_GENRE
+#TUPLE INSERTIONS FOR ARTIST_GENRE
 
 
 
@@ -105,7 +106,7 @@ VALUES ('87aj098', 'Rock');
 
 
 
---STORES ALBUM DATA ... REFERENCES ARTISTS
+#STORES ALBUM DATA ... REFERENCES ARTISTS
 
 
 
@@ -114,67 +115,66 @@ CREATE TABLE Album
 
 (
 album_type VARCHAR(15) NOT NULL,
-artist STRING NOT NULL,
-name STRING NOT NULL,
-id STRING NOT NULL,
+artist VARCHAR(30) NOT NULL,
+name VARCHAR(30) NOT NULL,
+id VARCHAR(30) NOT NULL,
 release_date VARCHAR(9) NOT NULL,
 rating VARCHAR(25),
 publisher VARCHAR(25),
 PRIMARY KEY(id),
-FOREIGN KEY (artist) REFERENCES Artist(name)
+FOREIGN KEY (id) REFERENCES Artist(id)
 );
 
 
 
 
---TUPLE INSERTIONS FOR ALBUM
+#TUPLE INSERTIONS FOR ALBUM
 
 
 
 
 INSERT INTO Album
-VALUES('Vinyl', 'Beastie Boys', "Paul's Boutique", '23j9s098a7', '1989',
+VALUES('Vinyl', 'Beastie Boys', "Paul's Boutique", '87aj098', '1989',
 'Explicit Content', 'Dust Brothers Music');
 
 INSERT INTO Album
-VALUES('CDR', 'Sara Bareilles', "Kaleidoscope Heart", '8sjw93ja9s', '2010',
+VALUES('CDR', 'Sara Bareilles', "Kaleidoscope Heart", '6ha97s2', '2010',
 'No Warnings', 'Epic');
 
 INSERT INTO Album
-VALUES('CDR', 'Sara Bareilles', "Little Voice", '7saj890a98', '2007',
+VALUES('CDR', 'Blink-182', "Blink-182", '5td74k2', '2007',
 'No Warnings', 'Epic');
 
 INSERT INTO Album
-VALUES('CDR', 'Panic! at the Disco', "A Fever You Can't Sweat Out", '8a927sjs9a', '2005',
+VALUES('CDR', 'Panic! at the Disco', "A Fever You Can't Sweat Out", '2008947', '2005',
 'Explicit Content', 'Fueled by Ramen');
 
 INSERT INTO Album
-VALUES('CDR', 'Hey Ocean!', "Stop Looking Like Music", '893js08wh3', '2006',
+VALUES('CDR', 'Hey Ocean!', "Stop Looking Like Music", '8jak098', '2006',
 'No Warnings', 'Vertical Productions');
 
 INSERT INTO Album
-VALUES('CDR', 'Paramore', "All We Know Is Falling", 's8wjw02j21', '2005',
+VALUES('CDR', 'Paramore', "All We Know Is Falling", 'sj8dlsa', '2005',
 'No Warnings', 'Fueled by Ramen');
 
 
 
 
---TABLE FOR STORING ALBUM GENRES ... WEAK ENTITY RELATIONSHIP TO ALBUM ... REFERENCES ALBUM
+#TABLE FOR STORING ALBUM GENRES ... WEAK ENTITY RELATIONSHIP TO ALBUM ... REFERENCES ALBUM
 
 
 
 
 CREATE TABLE Album_Genre
 (
-id STRING NOT NULL,
-genre STRING
-FOREIGN KEY (id) REFERENCES Album(id)
+id VARCHAR(30) NOT NULL,
+genre VARCHAR(30)
 );
 
 
 
 
---TUPLE INSERTIONS FOR ALBUM_GENRE
+#TUPLE INSERTIONS FOR ALBUM_GENRE
 
 
 
@@ -230,116 +230,111 @@ VALUES ('s8wjw02j21', 'Emo');
 
 
 
---STORES AUTHOR INFORMATION
+#STORES AUTHOR INFORMATION
 
 
 
 
 CREATE TABLE Author
 (
-first_name varchar(25) NOT NULL,
-last_name varchar(25) NOT NULL,
-other_name string,
-date_of_birth string NOT NULL,
-place_of_birth STRING,
-CONSTRAINT pkey_const_auth PRIMARY KEY (first_name, last_name, other_name)
+id INT NOT NULL,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
+date_of_birth VARCHAR(30) NOT NULL,
+place_of_birth VARCHAR(100),
+PRIMARY KEY (id)
 );
 
 
 
 
---TUPLE INSERTIONS FOR AUTHOR
+#TUPLE INSERTIONS FOR AUTHOR
 
 
 
 
-INSERT INTO Author(first_name, last_name, date_of_birth, place_of_birth)
-VALUES ('Christopher', 'Paolini', 'November 17, 1983', 'Los Angeles, California, United States');
+INSERT INTO Author(id, first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('1', 'Christopher', 'Paolini', 'November 17, 1983', 'Los Angeles, California, United States');
 
-INSERT INTO Author(first_name, last_name, date_of_birth, place_of_birth)
-VALUES ('Eoin', 'Colfer', 'May 14, 1965', 'Wexford, Republic of Ireland');
+INSERT INTO Author(id, first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('2', 'Eoin', 'Colfer', 'May 14, 1965', 'Wexford, Republic of Ireland');
 
-INSERT INTO Author
-VALUES ('Joanne', 'Rowling', 'J.K.', 'July 31, 1965', 'Yate, United Kingdom');
+INSERT INTO Author(id, first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('3', 'Joanne', 'Rowling', 'July 31, 1965', 'Yate, United Kingdom');
 
-INSERT INTO Author(first_name, last_name, date_of_birth, place_of_birth)
-VALUES ('Alexandre', 'Dumas', 'July 24, 1802', 'Villers-Cotterêts, France');
+INSERT INTO Author(id, first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('4', 'Alexandre', 'Dumas', 'July 24, 1802', 'Villers-Cotterêts, France');
 
-INSERT INTO Author(first_name, last_name, date_of_birth, place_of_birth)
-VALUES ('Shannon', 'Hale', 'January 26, 1974', 'Salt Lake City, Utah, United States');
-
-
+INSERT INTO Author(id, first_name, last_name, date_of_birth, place_of_birth)
+VALUES ('5', 'Shannon', 'Hale', 'January 26, 1974', 'Salt Lake City, Utah, United States');
 
 
---STORES BOOK DATA ... REFERENCES AUTHOR
+
+
+#STORES BOOK DATA ... REFERENCES AUTHOR
 
 
 
 
 CREATE TABLE Book
 (
-isbn int NOT NULL,
-title string NOT NULL,
-author_first_name string NOT NULL,
-author_last_name string NOT NULL,
-author_other_name string,
-publication_date string,
-page_length int NOT NULL,
-category string, 
-publisher string NOT NULL,
-type string,
-series string, 
+isbn INT NOT NULL,
+title VARCHAR(50) NOT NULL,
+author_id INT NOT NULL,
+publication_date VARCHAR(30),
+page_length INT NOT NULL,
+category VARCHAR(30),
+publisher VARCHAR(30),
+book_type VARCHAR(30),
+series VARCHAR(30),
 PRIMARY KEY (isbn),
-FOREIGN KEY ("author_first_name") references Author(first_name),
-FOREIGN KEY ("author_last_name") references Author(last_name),
-FOREIGN KEY ("author_other_name") references Author(other_name)
+FOREIGN KEY (author_id) references Author(id)
 );
 
 
 
 
---TUPLE INSERTIONS FOR BOOK
+#TUPLE INSERTIONS FOR BOOK
 
 
 
 
-INSERT INTO Book(isbn, title, author_first_name, author_last_name, page_length, category, publisher, type, series)
-VALUES(0966621336, 'Eragon', 'Christopher', 'Paolini', 544, 'Young Adult', 'Paolini LLC', 'Novel', 'Inheritance Cycle');
+INSERT INTO Book(isbn, title, author_id, publication_date, page_length, category, publisher, book_type, series)
+VALUES(0966621336, 'Eragon', 1, 'Sept 6, 2003', 544, 'Young Adult', 'Paolini LLC', 'Novel', 'Inheritance Cycle');
 
-INSERT INTO Book(isbn, title, author_first_name, author_last_name, page_length, category, publisher, type, series)
-VALUES(0375826700, 'Eldest', 'Christopher', 'Paolini', 694, 'Young Adult', 'Paolini LLC', 'Novel', 'Inheritance Cycle');
+INSERT INTO Book(isbn, title, author_id, publication_date, page_length, category, publisher, book_type, series)
+VALUES(0375826700, 'Eldest', 1, NULL, 647, 'Young Adult', 'Paolini LLC', 'Novel', 'Inheritance Cycle');
 
-INSERT INTO Book(isbn, title, author_first_name, author_last_name, publication_date, page_length, category, publisher, type, series)
-VALUES(1582348898, 'Enna Burning', 'Shannon', 'Hale', '7 November 2005', 317, 'Teen', 'Bloomsbury Publishing PLC', 'Novel', 'The Books of Bayern');
+INSERT INTO Book(isbn, title, author_id, publication_date, page_length, category, publisher, book_type, series)
+VALUES(1582348898, 'Enna Burning', 3, '7 November 2005', 317, 'Teen', 'Bloomsbury Publishing PLC', 'Novel', 'The Books of Bayern');
 
-INSERT INTO Book(isbn, title, author_first_name, author_last_name, publication_date, page_length, category, publisher, type, series)
-VALUES(0747546241, 'Harry Potter and the Goblet of Fire', 'Joanne', 'Rowling', 'J.K.', '8 July 2000', 636, 'Young Adult', 'Bloomsbury Childrens', 'Novel', 'Fantasy', 'Harry Potter');
+INSERT INTO Book(isbn, title, author_id, publication_date, page_length, category, publisher, book_type, series)
+VALUES(0747546241, 'Harry Potter and the Goblet of Fire', 5, '8 July 2000', 636, 'Young Adult', 'Bloomsbury Childrens', 'Novel', 'Harry Potter');
 
-INSERT INTO Book(isbn, title, author_first_name, author_last_name, publication_date, page_length, category, publisher, type, series)
-VALUES(0141321318, 'Artemis Fowl: The Eternity Code', 'Eoin', 'Colfer', '27 April 2003 ', 352, 'Teen', 'Viking Press', 'Novel', 'Artemis Fowl');
+INSERT INTO Book(isbn, title, author_id, publication_date, page_length, category, publisher, book_type, series)
+VALUES(0141321318, 'Artemis Fowl: The Eternity Code', 3, '27 April 2003 ', 352, 'Teen', 'Viking Press', 'Novel', 'Artemis Fowl');
 
-INSERT INTO Book(isbn, title, author_first_name, author_last_name, publication_date, page_length, category, publisher, type, series)
-VALUES(0141381647, 'Artemis Fowl: The Opal Deception', 'Eoin', 'Colfer', '30 April 2005 ', 352, 'Teen', 'Viking Press', 'Fantasy novel', 'Artemis Fowl');
-
-
+INSERT INTO Book(isbn, title, author_id, publication_date, page_length, category, publisher, book_type, series)
+VALUES(0141381647, 'Artemis Fowl: The Opal Deception', 3, '30 April 2005 ', 352, 'Teen', 'Viking Press', 'Fantasy novel', 'Artemis Fowl');
 
 
---TABLE FOR STORING BOOK GENRES ... WEAK ENTITY RELATIONSHIP TO BOOK ... REFERENCES BOOK
+
+
+#TABLE FOR STORING BOOK GENRES ... WEAK ENTITY RELATIONSHIP TO BOOK ... REFERENCES BOOK
 
 
 
 
 CREATE TABLE Book_Genre
 (
-id STRING NOT NULL,
-genre STRING
-FOREIGN KEY (id) REFERENCES Book(isbn)
+id VARCHAR(30) NOT NULL,
+genre VARCHAR(30)
 );
 
 
 
 
---TUPLE INSERTIONS FOR BOOK_GENRE
+#TUPLE INSERTIONS FOR BOOK_GENRE
 
 
 
@@ -399,47 +394,7 @@ VALUES ('0141381647', 'Action');
 
 
 
---STORES PLAYLIST DATA CREATED BY USER (DATA SHOULD BE INSERTED FROM PLAYLIST VIEW!!) ... REFERENCES
-
-
-
-
-CREATE TABLE Playlist
-(
-id INT NOT NULL,
-book_isbn INT,
-album_id INT,
-PRIMARY KEY(id),
-FOREIGN KEY ("id") references User(id)
-);
-
-
-
-
---TUPLE INSERTIONS FOR PLAYLIST (SHOULD NOT NORMALLY BE ENTERED LIKE THIS...RATHER FROM SPECIFIED VIEW)
-
-
-
-
-INSERT INTO Playlist(id, book_isbn)
-VALUES(15673684, 0141321318);
-
-INSERT INTO Playlist(id, book_isbn)
-VALUES(57954213, 1582348898, 'Bluegrass');
-
-INSERT INTO Playlist(id, book_isbn)
-VALUES(24687456, 0747546241);
-
-INSERT INTO Playlist(id, book_isbn)
-VALUES(54321648, 0141381647);
-
-INSERT INTO Playlist(id, book_isbn)
-VALUES(42145845, 0375826700);
-
-
-
-
---STORES AUTHENTICATION INFORMATION FOR ACCOUNT REGISTERED USERS
+#STORES AUTHENTICATION INFORMATION FOR ACCOUNT REGISTERED USERS
 
 
 
@@ -450,38 +405,78 @@ name VARCHAR(25) NOT NULL,
 id INT NOT NULL,
 email VARCHAR(45) NOT NULL,
 phone_number VARCHAR(15),
-password MD5 NOT NULL,
-country VARCHAR(45), 
+password VARCHAR(45) NOT NULL,
+country VARCHAR(45),
 saved_playlist INT,
-PRIMARY KEY(email, id),
+PRIMARY KEY(id)
 );
 
 
 
 
---TUPLE INSERTIONS FOR USER
+#TUPLE INSERTIONS FOR USER
 
 
 
 
-INSERT INTO User(name, email, password, country)
-VALUES('Glen', 'glenr@google.com', 'patd', 'Canada');
+INSERT INTO User(name, id, email, password, country)
+VALUES('Glen', 1, 'glenr@google.com', 'patd', 'Canada');
 
 INSERT INTO User
-VALUES('Claud', 'claudc@outlook.com', '416-909-7878', '123', 'United States', 57954213);
+VALUES('Claud', 2, 'claudc@outlook.com', '416-909-7878', '123', 'United States', 57954213);
 
-INSERT INTO User(name, email, password, country)
-VALUES('Adelina', 'adelinac@outlook.com', '456', 'United Kingdom');
+INSERT INTO User(name, id, email, password, country)
+VALUES('Adelina', 3, 'adelinac@outlook.com', '456', 'United Kingdom');
 
-INSERT INTO User(name, email, password, country)
-VALUES('Faith', 'faithd@rogers.com', 'abc', 'Egypt');
+INSERT INTO User(name, id, email, password, country)
+VALUES('Faith', 4, 'faithd@rogers.com', 'abc', 'Egypt');
 
-INSERT INTO User(name, email, phone_number, password, country)
-VALUES('Dalton', 'daltonw@google.com', '647-367-7828', '55a3!', 'Canada');
+INSERT INTO User(name, id, email, phone_number, password, country)
+VALUES('Dalton', 5, 'daltonw@google.com', '647-367-7828', '55a3!', 'Canada');
 
-INSERT INTO User(name, email, phone_number, password, country)
-VALUES('Leora', 'leorag@outlook.com', '939-456-7228', 'password', 'United States');
+INSERT INTO User(name, id, email, phone_number, password, country)
+VALUES('Leora', 6, 'leorag@outlook.com', '939-456-7228', 'password', 'United States');
 
-UPDATE User
-SET saved_playlist=42145845
-WHERE email='adelinac@outlook.com';
+
+
+#STORES PLAYLIST DATA CREATED BY USER (DATA SHOULD BE INSERTED FROM PLAYLIST VIEW!!) ... REFERENCES
+
+
+
+CREATE TABLE Playlist
+(
+id INT NOT NULL,
+user_id INT NOT NULL,
+book_isbn INT,
+album_id INT,
+creation_date VARCHAR(30),
+PRIMARY KEY(id),
+FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+
+
+
+#TUPLE INSERTIONS FOR PLAYLIST (SHOULD NOT NORMALLY BE ENTERED LIKE THIS...RATHER FROM SPECIFIED VIEW)
+
+
+
+
+INSERT INTO Playlist(id, user_id, book_isbn)
+VALUES(15673684, 1, 0141321318);
+
+INSERT INTO Playlist(id, user_id, book_isbn)
+VALUES(57954213, 2, 1582348898);
+
+INSERT INTO Playlist(id, user_id, book_isbn)
+VALUES(24687456, 3, 0747546241);
+
+INSERT INTO Playlist(id, user_id, book_isbn)
+VALUES(54321648, 4, 0141381647);
+
+INSERT INTO Playlist(id, user_id, book_isbn)
+VALUES(42145845, 5, 0375826700);
+
+
+
+
