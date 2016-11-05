@@ -30,8 +30,8 @@ CREATE TABLE Album
 (
 album_type VARCHAR(15) NOT NULL,
 artist STRING NOT NULL,
-id STRING NOT NULL,
 name STRING NOT NULL,
+id STRING NOT NULL,
 release_date VARCHAR(9) NOT NULL,
 genre VARCHAR(15),
 rating VARCHAR(25),
@@ -132,7 +132,7 @@ CREATE TABLE Playlist
 (
 id INT NOT NULL,
 book_isbn INT NOT NULL,
-genre STRING,
+album_id INT NOT NULL,
 PRIMARY KEY(id),
 FOREIGN KEY ("book_isbn") references Book(isbn)
 );
@@ -140,7 +140,7 @@ FOREIGN KEY ("book_isbn") references Book(isbn)
 INSERT INTO Playlist(id, book_isbn)
 VALUES(15673684, 0141321318);
 
-INSERT INTO Playlist
+INSERT INTO Playlist(id, book_isbn)
 VALUES(57954213, 1582348898, 'Bluegrass');
 
 INSERT INTO Playlist(id, book_isbn)

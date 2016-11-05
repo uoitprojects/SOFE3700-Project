@@ -3,7 +3,9 @@ package services;
 import java.sql.*;
 
 /**
- * Created by Brady Ibanez on 11/2/2016. Intended to allow for initiation and creation of DB and DB connections.
+ * Created by Brady Ibanez on 11/2/2016. Intended to allow for initiation and
+ * creation of DB and DB connections. A connection is made to the server at the
+ * predesignated address in order to collect data required by the application.
  */
     public class SQLiteJDBC
 {
