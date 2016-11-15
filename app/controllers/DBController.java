@@ -1,4 +1,4 @@
-package services;
+package controllers;
 
 import java.sql.*;
 
@@ -7,7 +7,7 @@ import java.sql.*;
  * creation of DB and DB connections. A connection is made to the server at the
  * predesignated address in order to collect data required by the application.
  */
-    public class SQLiteJDBC
+    public class DBController
 {
     public static void main( String args[])
     {
