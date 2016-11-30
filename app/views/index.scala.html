@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
     <!-- put first the jquery path, otherwise the bootstrap.js won't work-->
     <script src="js/jquery/jquery-3.1.0.js"></script>
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>sb
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 
 
     <title>Build the future</title>
@@ -22,7 +22,95 @@
     <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/main.css")' />
     <!--[if lte IE 9]><link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ie9.css")' /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/ie8.css")'/><![endif]-->
+
+    <style>
+        .modal-body
+ {
+     padding:9px 15px;
+     border-bottom:1px solid #eee;
+     background-color: black;
+
+ }
+
+    .modal-header {
+
+        background-color: blue;
+    }
+
+ input[type=text] {
+         width: 100%;
+         padding: 12px 20px;
+         margin: 8px 0;
+         border: 1px solid #ccc;
+         border-radius: 12px;
+         box-sizing: border-box;
+         background-image: url('search-icon.png');
+         background-position: 10px 10px;
+         background-repeat: no-repeat;
+         padding: 12px 20px 12px 40px;
+            }
+
+
+      p{
+        font-family: Courier New;
+        font-size:medium;
+           }
+
+
+
+      div1 {
+         height: 200px;
+         width: 400px;
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         margin-top: -100px;
+         margin-left: -200px;
+        }
+
+    .float{
+        position:fixed;
+        width:30px;
+        height:30px;
+        bottom:58%;
+        right:30%;
+        background-color:#0C9;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+        box-shadow: 2px 2px 3px #999;
+}
+
+    .plus{
+          color: white;
+          position: absolute;
+          top: 0;
+          display: block;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          text-align: center;
+          padding: 0;
+          margin: 0;
+        }
+
+     a{
+        text-decoration:none;
+     }
+
+
+
+
+
+    </style>
+
+
+
+
+
+
 </head>
+
 <body>
 
 <!--  ALL Modals--->
@@ -130,11 +218,20 @@
                     <img src='@routes.Assets.versioned("images/running-og.jpg")' width="100" height="40" alt="" />
                 </span>
                 <header class="">
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target ="#mModal">View 1</button>
+                    <div>
+
+                        <a href="#" class="float">
+                            <p class="plus">+</p>
+                        </a>
+                        <p>Kobo Search</p>
+
+                        <form id="search" action="#" method="post">
+                            <input type="text" name="search" placeholder="Search..">
+                        </form>
+                    </div>
 
 
-
-                    <p>Description</p>
+                    <p>Search for books</p>
                 </header>
             </article>
             <article>
@@ -142,11 +239,10 @@
 										<img src='@routes.Assets.versioned("images/index.png")' width="100" height="40"  alt="" />
 									</span>
                 <header class="major">
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target ="#myModal2">View 2</button>
 
 
 
-                    <p>Description</p>
+                    <p>Search Tracks</p>
                 </header>
             </article>
 
@@ -186,7 +282,7 @@
         <section id="two">
             <div class="inner">
                 <header class="major">
-                    <h2>iVolunteer</h2>
+                    <h2>Kobify</h2>
                 </header>
                 <p>Term Project for data base mangement system</p>
                 <ul class="actions">
@@ -197,32 +293,6 @@
 
     </div>
 
-    <!-- Contact -->
-    <section id="contact">
-        <div class="inner">
-            <section>
-                <form method="post" action="#">
-                    <div class="field half first">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name" />
-                    </div>
-                    <div class="field half">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" />
-                    </div>
-                    <div class="field">
-                        <label for="message">Message</label>
-                        <textarea name="message" id="message" rows="6"></textarea>
-                    </div>
-                    <ul class="actions">
-                        <li><input type="submit" value="Send Message" class="special" /></li>
-                        <li><input type="reset" value="Clear" /></li>
-                    </ul>
-                </form>
-            </section>
-
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer id="footer">
