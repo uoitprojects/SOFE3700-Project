@@ -31,8 +31,6 @@
 
   </style>
 
-
-
     <script type='text/javascript'>//<![CDATA[
 window.onload=function(){
 // find template and compile it
@@ -86,25 +84,12 @@ document.getElementById('search-form').addEventListener('submit', function (e) {
     searchAlbums(document.getElementById('query').value);
 }, false);
 
-
-document.getElementById('db-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    pushData(document.getElementById('query').value);
-}, false);
-
-var pushData = function insertShapeDB(value)
+function addTrack(value)
 {
-  var tableName = 'Track';
-  var columnName = '';
-
-  var sql = 'INSERT OR IGNORE INTO ' + tableName + ' (' + columnName + ') VALUES (?)';
-  db.transaction(function(tx) {
-      tx.executeSql(sql, [value]);
-  });
+alert("A");
 }
-};
 
-
+}
 </script>
 
 
@@ -133,20 +118,12 @@ var pushData = function insertShapeDB(value)
             <p class="track-info">
                 Album: {{album.name}}
             </p>
-            <form id="db-form">
-            <a href="{{uri}}" id="addTrack" class="request-btn btn btn-primary">Add to Playlist</a>
-            </form>
+<form>
+            <button type="button" id="addTrack" class="request-btn btn btn-primary" value="{{uri}}" name="Add to Playlist" onclick="addTrack();" />Add to Playlist</button>
+</form>
         </div>
     </div>
     {{/each}}
-
-    <!--
-    <p class="pagination">
-        <a href="{{href}}"><</a>
-        <a href="{{next}}">></a>
-    </p>
--->
-
 </script>
 
 </body>

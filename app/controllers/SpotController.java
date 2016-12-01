@@ -11,23 +11,6 @@ import javax.script.*;
  * Created by 100551324 on 11/29/2016.
  */
 public class SpotController extends Controller{
-    public Result spotest() {
-        return ok(spot.render());
-    }
-/*
-    public jscall{
-
-        ScriptEngineManager manager = new ScriptEngineManager();
-        ScriptEngine engine = manager.getEngineByName("JavaScript");
-        // read script file
-        engine.eval(Files.newBufferedReader(Paths.get("C:/Scripts/Jsfunctions.js"), StandardCharsets.UTF_8));
-
-        Invocable inv = (Invocable) engine;
-        // call function from script file
-        inv.invokeFunction("yourFunction", "param");
-
-    }
-    */
 
     public Connection connect() {
         Connection c = null;
@@ -39,6 +22,10 @@ public class SpotController extends Controller{
             System.exit(0);
         }
         return c;
+    }
+
+    public Result spotest() {
+        return ok(spot.render());
     }
 
 
