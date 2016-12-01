@@ -6,7 +6,7 @@ import views.html.*;
 public class LoginController extends Controller {
 
     public Result login() {
-        return ok(login.render());
+        return ok(loginpage.render());
     }
 
 }

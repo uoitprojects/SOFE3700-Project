@@ -19,4 +19,9 @@ public class HomeController extends Controller {
         return ok(index.render());
     }
 
+
+    public Result login() {
+        return ok(loginpage.render());
+    }
+
 }

@@ -25,7 +25,7 @@ public class SpotController extends Controller{
     }
 
     public Result spotest() {
-        return ok(spot.render());
+        return ok(tracks.render());
     }
 
 

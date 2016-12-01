@@ -9,7 +9,7 @@ import java.sql.*;
  */
     public class DBController
 {
-    public static void main( String args[])
+    public void db()
     {
         Connection c = null;
         try {
