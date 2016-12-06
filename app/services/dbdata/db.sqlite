@@ -1,3 +1,4 @@
+#STORES ARTIST DATA
 
 CREATE TABLE Artist
 (
@@ -7,33 +8,14 @@ type VARCHAR(20) NOT NULL,
 PRIMARY KEY(id)
 );
 
-
-
-
-
-INSERT INTO Artist
-VALUES ('2008947', 'Panic! at the Disco', 'Band');
-
-INSERT INTO Artist
-VALUES ('5td74k2', 'Blink-182', 'Band');
-
-INSERT INTO Artist
-VALUES ('6ha97s2', 'Sara Bareilles', 'Artist');
-
-INSERT INTO Artist
-VALUES ('8jak098', 'Hey Ocean!', 'Band');
-
-INSERT INTO Artist
-VALUES ('02kdw09', 'Kelly Clarkson', 'Artist');
-
-INSERT INTO Artist
-VALUES ('sj8dlsa', 'Paramore', 'Band');
-
-INSERT INTO Artist
-VALUES ('87aj098', 'Beastie Boys', 'Band');
-
-
-
+CREATE TABLE Track
+(
+id string NOT NULL,
+name VARCHAR(50) NOT NULL,
+artist VARCHAR(50) NOT NULL,
+album VARCHAR(20) NOT NULL,
+PRIMARY KEY(id)
+);
 
 
 
@@ -43,11 +25,6 @@ id VARCHAR(30) NOT NULL,
 genre VARCHAR(30),
 FOREIGN KEY (id) REFERENCES Artist(id)
 );
-
-
-
-
-
 
 
 
@@ -404,12 +381,9 @@ CREATE TABLE Playlist
 id INT NOT NULL,
 user_id INT NOT NULL,
 book_isbn INT NOT NULL,
-album_id VARCHAR(30) NOT NULL,
-creation_date VARCHAR(30),
 PRIMARY KEY(id),
 FOREIGN KEY (user_id) REFERENCES User(id),
-FOREIGN KEY (book_isbn) REFERENCES Book(isbn),
-FOREIGN KEY (album_id) REFERENCES Album(id)
+FOREIGN KEY (book_isbn) REFERENCES Book(isbn)
 );
 
 

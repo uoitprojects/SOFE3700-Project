@@ -20,7 +20,7 @@ public class HomeController extends Controller {
     }
 
 
-    public Result login() {
+    public Result login2() {
         return ok(loginpage.render());
     }
 
